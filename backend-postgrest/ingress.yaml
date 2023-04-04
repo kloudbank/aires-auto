@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: global-issuer
+  name: dvdshop-api-postgrest
+  labels:
+    name: dvdshop-api-postgrest
+spec:
+  rules:
+  - host: dvdshop-postgrest.aries.kubepia.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: dvdshop-api-postgrest
+            port: 
+              number: 3000
+      - pathType: Prefix
+        path: "/swagger-ui"
+        backend:
+          service:
+            name: swagger-ui
+            port: 
+              number: 8080
+  tls:
+  - hosts:
+    - dvdshop-postgrest.aries.kubepia.net
+    secretName: https-certificates-dvdshop-postgrest
+---

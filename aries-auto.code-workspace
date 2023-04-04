@@ -2,7 +2,15 @@
 	"folders": [
 		{
 			"path": "postgre"
+		},
+		{
+			"path": "dvdshop"
+		},
+		{
+			"path": "backend-postgrest"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic"
+	}
 }
